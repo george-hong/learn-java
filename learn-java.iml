@@ -8,7 +8,8 @@
       <sourceFolder url="file://$MODULE_DIR$/003 loop" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/004 random" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/005 baseObject" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/04_ObjectAndClass/Constructor" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/04_ObjectAndClass/01_Constructor" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/04_ObjectAndClass/02_FieldInit" isTestSource="false" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
