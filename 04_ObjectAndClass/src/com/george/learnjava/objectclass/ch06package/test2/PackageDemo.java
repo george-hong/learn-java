@@ -5,3 +5,13 @@ public class PackageDemo {
     public int publicAttr = 123;
     int noDescAttr = 123;
 }
+
+class Test {
+    public static void main(String[] args) {
+        PackageDemo demo = new PackageDemo();
+        // 私有属性不可访问
+//        System.out.print(demo.selfAttr);
+        System.out.print(demo.publicAttr);
+        System.out.print(demo.noDescAttr);
+    }
+}
