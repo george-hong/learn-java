@@ -1,3 +1,5 @@
+package com.george.learnjava.objectclass.ch04callconstructor;
+
 /**
  * p 129
  * 如果构造器的第一个语句形如 this(...) 那么这个构造器将调用同一个类的另一个构造器

@@ -1,3 +1,5 @@
+package com.george.learnjava.objectclass.ch02fieldinit;
+
 /**
  * p 127
  * 初始化类的字段有三种方式
@@ -37,4 +39,3 @@ class Test3 {
         field = 123;
     }
 }
-

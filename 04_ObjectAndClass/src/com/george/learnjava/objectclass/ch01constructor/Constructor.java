@@ -1,3 +1,5 @@
+package com.george.learnjava.objectclass.ch01constructor;
+
 /**
  * page 126
  * 1. 如果一个类没有提供任何构造参数，那么他会自动拥有一个无参构造器

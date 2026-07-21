@@ -1,3 +1,5 @@
+package com.george.learnjava.objectclass.ch05record;
+
 /**
  * p 134 record 语法 为 record Point(int x, int y) {}
  * 可以为record添加方法，如果添加的方法和自动方法同名，则需要保持签名一致

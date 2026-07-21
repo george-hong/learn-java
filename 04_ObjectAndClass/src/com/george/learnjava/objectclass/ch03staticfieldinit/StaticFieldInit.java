@@ -1,3 +1,5 @@
+package com.george.learnjava.objectclass.ch03staticfieldinit;
+
 /**
  * p 130
  * 类静态字段的初始化有两种方式

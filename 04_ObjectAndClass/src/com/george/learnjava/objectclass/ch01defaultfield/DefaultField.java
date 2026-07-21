@@ -1,3 +1,5 @@
+package com.george.learnjava.objectclass.ch01defaultfield;
+
 /**
  * 如果在构造器中没有显式地为字段设置初始值，它就会自动设置为默认值
  * char 为 \u0000
