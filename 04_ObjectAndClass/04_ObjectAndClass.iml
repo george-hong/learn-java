@@ -3,14 +3,6 @@
   <component name="NewModuleRootManager" inherit-compiler-output="true">
     <exclude-output />
     <content url="file://$MODULE_DIR$">
-      <sourceFolder url="file://$MODULE_DIR$/01_Constructor" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/01_defaultField" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/02_FieldInit" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/03_StaticFieldInit" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/04_CallConstructor" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/05_Record" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/06_package" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/07_package" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
     </content>
     <orderEntry type="inheritedJdk" />

@@ -27,10 +27,6 @@ public class SuperClassAndChildClass {
         Employee[] eList = mList;
         mList[0] = boss;
         // eList[1] = employee; // 这一步会引发ArrayStoreException异常
-//        for (Employee e : eList) {
-//            // 这里的 e 能够正确调用Manager/Employee对象上正确的getSalary方法，这种特性称为多态
-//            System.out.println(e.getName() + "'s salary is " + e.getSalary());
-//        }
     }
 }
 
