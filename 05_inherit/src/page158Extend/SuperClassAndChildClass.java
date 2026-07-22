@@ -11,12 +11,10 @@ public class SuperClassAndChildClass {
 
 class Employee {
     String name;
-    String hireDate;
     private double salary;
 
-    Employee(String aName, String aHireDate, double aSalary) {
+    Employee(String aName, double aSalary) {
         name = aName;
-        hireDate = aHireDate;
         salary = aSalary;
     }
 
@@ -24,9 +22,6 @@ class Employee {
         return name;
     }
 
-    public String getHireDate() {
-        return hireDate;
-    }
 
     public double getSalary() {
         return salary;
@@ -34,5 +29,12 @@ class Employee {
 }
 
 class Manager extends Employee {
+    private int bouns;
+
+    Manager(String aName, double aSalary, int aBouns) {
+        super(aName, aSalary);
+        bouns = aBouns;
+    }
+
 
 }
