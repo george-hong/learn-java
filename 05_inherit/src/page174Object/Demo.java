@@ -5,16 +5,20 @@
  */
 package page174Object;
 
+import java.util.Objects;
+
 public class Demo {
     public static void main(String[] args) {
         // Java中的每一个类都拓展了Object
         Object obj = new Employee();
 
-        Employee emp1 = new Employee("Jack");
-        Employee emp2 = new Employee("Jack");
+        Employee emp1 = new Employee("Jack", 6000);
+        Employee emp2 = new Employee("Jack", 6000);
+        Employee emp3 = new Employee("Jackson", 6000);
 
-        System.out.println(emp1.equals(emp1)); // true
-        System.out.println(emp1.equals(emp2)); // false
+        System.out.println("emp1 == emp1:" + emp1.equals(emp1)); // true
+        System.out.println("emp1 == emp2:" + emp1.equals(emp2)); // false
+        System.out.println("emp1 == emp3:" + emp1.equals(emp3)); // false
         System.out.println(emp1.getClass());
 
     }
@@ -22,14 +26,29 @@ public class Demo {
 
 class Employee {
     public String name;
-    public
+    public double salary;
 
-    Employee(String name) {
+    Employee(String name, double salary) {
         this.name = name;
+        this.salary = salary;
     }
 
     Employee() {
-        this("demo");
+        this("demo", 5000);
+    }
+
+    public boolean equals(Object other) {
+        if (this == other) {
+            return true;
+        }
+        if (other == null) {
+            return false;
+        }
+        if (getClass() != other.getClass()) {
+            return false;
+        }
+        Employee obj = (Employee) other;
+        return Objects.equals(name, obj.name) && salary == obj.salary;
     }
 }
 
