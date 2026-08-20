@@ -38,7 +38,7 @@ public class Demo {
             // 6.2.6    2.为了确保所捕获的值是明确定义的，这里有一个重要的限制。在lambda表达式中，只能引用值不会改变的变量。
             // 以下代码报错
             // java: 从lambda 表达式引用的本地变量必须是最终变量或实际上的最终变量
-            start--;
+            // start--;
         };
     }
 
@@ -46,7 +46,7 @@ public class Demo {
         for (int i = 0; i < count; i++) {
             // 6.2.6    3.另外如果在lambda表达式中引用一个变量，而这个变量可能在外部改变，这也是不合法的
             // java: 从lambda 表达式引用的本地变量必须是最终变量或实际上的最终变量
-            ActionListener al = (ActionEvent e) -> System.out.println(i + ":" +text);
+            // ActionListener al = (ActionEvent e) -> System.out.println(i + ":" +text);
         }
     }
 
@@ -54,9 +54,9 @@ public class Demo {
         // 6.2.6    5.lambda标识的体育嵌套快有相同的作用域。这里同样适用命名冲突和遮蔽有关规则。
         String text = "Hello";
         // java: 已在方法 testVariable()中定义了变量 text
-        Runnable fn = (String text) -> {
-            System.out.println(text);
-        };
+        // Runnable fn = (String text) -> {
+        //     System.out.println(text);
+        // };
     }
 
     public void useThis() {
