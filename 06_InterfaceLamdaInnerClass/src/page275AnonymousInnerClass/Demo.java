@@ -15,6 +15,7 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.time.Instant;
+import java.util.ArrayList;
 
 public class Demo {
     public static void main(String[] args) {
@@ -55,6 +56,10 @@ class TalkingClock {
         };
 
         p.sayHello();
+        // 下面的技巧成为"双括号初始化"，这里利用了内部类。
+        // 注意这里的双括号，外层括号剑灵了ArrayList的一个匿名子类。括号内层是一个对象初始化块。
+        var al = new ArrayList<String>() {{ add("Jack"); add("Lucid"); }};
+        System.out.println("al = " + al);
     }
 }
 
