@@ -32,7 +32,7 @@ public class Demo {
 
     // 4.但是不需要声明Java内部错误，即从Error继承的异常。任何代码都有可能抛出那些异常。类似的，也不应该声明从RuntimeException继承的那些非检查型异常
     // 以下是不好的示范，应避免出现这种异常
-    public static void maybeError2() throws ArrayIndexOutOfBoundsException {}
+    public static void doNotDoLikeThis() throws ArrayIndexOutOfBoundsException {}
 }
 
 class SuperError {
