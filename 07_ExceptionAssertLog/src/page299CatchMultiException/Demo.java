@@ -28,7 +28,7 @@ import java.nio.file.Paths;
 
 public class Demo {
     public static void main(String[] args) throws Exception {
-        String filePath = "07_ExceptionAssertLog/src/page299CatchMultiException/input.txt";
+        String filePath = "07_ExceptionAssertLog/resource/input.txt";
         String errorFilePath = "input2.txt";
         try {
 
