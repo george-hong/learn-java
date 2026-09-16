@@ -15,8 +15,24 @@
  *  3.如果将记录级别设置为比INFO更低的级别，还需要修改日志处理器的配置。默认的日志处理器会抑制低于INFO级别的消息。
  *  4.可以使用log方法并指定级别，例如：logger.log(Level.FINE, message)
  *  5.默认的日志记录会显示包含日志调用的类和方法的名字（根据调用栈得出）。不过，如果虚拟机对执行过程进行了优化，就可能得不到准确的调用信息。
- *      此时，可以使用logp方法获取调用类和方法的确切位置，这个方法的前敏为：
+ *      此时，可以使用logp方法获取调用类和方法的确切位置，这个方法的签名为：
  *      void logp(Level l, String className, String methodName, String message)
+ *      有一些用来跟踪执行流的便利方法：
+ *      void entering(String className, String methodName)
+ *      void entering(String className, String methodName, Object param)
+ *      void entering(String className, String methodName, Object[] params)
+ *      void exiting(String ClassName, String methodName)
+ *      void exiting(String ClassName, String methodName, Object result)
+ *      例如：
+ *      int read(String file, String pattern) {
+ *          logger.entering("com.mycompany.mylib.Reader", "read", new Object[] { file, pattern });
+ *          ...
+ *          logger.exiting("com.mycompany.mylib.Reader", "read", count);
+ *          return count;
+ *      }
+ *  6.记录日志的一个常见用途是记录那些预料之外的异常。可使用下面两个便利方法在日志记录中包含异常的描述。
+ *      void throwing(String className, String methodName, Throwable t)
+ *      void log(Level l, String message, Throwable t)
  */
 package page316BaseLog;
 
@@ -73,5 +89,55 @@ class AdvanceLog2 {
         // 4.可以使用log方法并指定级别，例如：logger.log(Level.FINE, message)
         Logger logger = Logger.getLogger("customLog");
         logger.log(Level.INFO, "调用log方法输入日志");
+    }
+}
+
+class AdvanceLog3 {
+    public static Logger logger = Logger.getLogger("advanceLog3");
+    static {
+        Level lv = Level.FINER;
+        logger.setUseParentHandlers(false);
+        logger.setLevel(lv);
+        ConsoleHandler handler = new ConsoleHandler();
+        handler.setFormatter(new SimpleFormatter());
+        handler.setLevel(lv);
+        logger.addHandler(handler);
+    }
+    public static void main(String[] args) {
+        logMethod("测试消息", 7);
+    }
+
+    public static void logMethod(String message, int count) {
+        logger.entering(AdvanceLog3.class.getName(), "logMethod", new String[]{ message });
+        logger.exiting(AdvanceLog3.class.getName(), "logMethod");
+        System.out.println("结束任务");
+    }
+}
+
+class AdvanceLog4 {
+    public static Logger logger = Logger.getLogger("advanceLog4");
+    static {
+        Level lv = Level.FINER;
+        logger.setUseParentHandlers(false);
+        logger.setLevel(lv);
+        ConsoleHandler handler = new ConsoleHandler();
+        handler.setFormatter(new SimpleFormatter());
+        handler.setLevel(lv);
+        logger.addHandler(handler);
+    }
+    public static void main(String[] args) throws Exception {
+        String clsName = AdvanceLog4.class.getName();
+        String mthName = "main";
+        // 5.默认的日志记录会显示包含日志调用的类和方法的名字（根据调用栈得出）。不过，如果虚拟机对执行过程进行了优化，就可能得不到准确的调用信息。
+        // 此时，可以使用logp方法获取调用类和方法的确切位置，这个方法的签名为：
+        // void logp(Level l, String className, String methodName, String message)
+        logger.logp(Level.INFO, clsName, mthName, "test message");
+        // 6.记录日志的一个常见用途是记录那些预料之外的异常。可使用下面两个便利方法在日志记录中包含异常的描述。
+        //      void throwing(String className, String methodName, Throwable t)
+        //      void log(Level l, String message, Throwable t)
+        Exception e = new Exception("测试异常");
+        logger.throwing(AdvanceLog4.class.getName(), mthName, e);
+
+        logger.log(Level.INFO, "测试log的message", e);
     }
 }
