@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/01_BaseSyntax/01_BaseSyntax.iml" filepath="$PROJECT_DIR$/01_BaseSyntax/01_BaseSyntax.iml" />
+      <module fileurl="file://$PROJECT_DIR$/04_ObjectAndClass/04_ObjectAndClass.iml" filepath="$PROJECT_DIR$/04_ObjectAndClass/04_ObjectAndClass.iml" />
+      <module fileurl="file://$PROJECT_DIR$/05_inherit/05_inherit.iml" filepath="$PROJECT_DIR$/05_inherit/05_inherit.iml" />
+      <module fileurl="file://$PROJECT_DIR$/06_InterfaceLamdaInnerClass/06_InterfaceLamdaInnerClass.iml" filepath="$PROJECT_DIR$/06_InterfaceLamdaInnerClass/06_InterfaceLamdaInnerClass.iml" />
+      <module fileurl="file://$PROJECT_DIR$/07_ExceptionAssertLog/07_ExceptionAssertLog.iml" filepath="$PROJECT_DIR$/07_ExceptionAssertLog/07_ExceptionAssertLog.iml" />
+    </modules>
+  </component>
+</project>
