@@ -17,7 +17,7 @@ public class Demo {
 
         Pair<Manager> managerPair = new Pair<>();
         // java: 不兼容的类型: page357GenericityInheritRule.Pair<page357GenericityInheritRule.Manager>无法转换为page357GenericityInheritRule.Pair<page357GenericityInheritRule.Employee>
-        Pair<Employee> employeePair = managerPair;
+        // Pair<Employee> employeePair = managerPair;
     }
 }
 
