@@ -13,6 +13,13 @@
  *  default boolean removeIf(Predicate<? super E> filter)
  *  这个方法会删除所有满足给定谓词条件的元素。
  *
+ * 8.8.3 无限定通配符
+ * 标识未知类型，让泛型代码更灵活
+ *
+ * 8.8.4 通配符捕获
+ * 通配符不是类型变量，因此，不能编写使用?作为一种类型的代码
+ * 如后面的代码是不合法的 ? t = p.getFirst()
+ *
  */
 package page359WildcardType;
 
@@ -136,5 +143,45 @@ class WildTypeSuperDemo {
         // 这个方法希望能够传入Predicate<Object>而不只是Predicate<Employee>
         employees.removeIf(condition);
         System.out.println(employees);
+    }
+}
+
+class NoLimitWildType {
+    public static void main(String[] args) {
+        Pair<?> mPair = new Pair<>();
+        Employee e1 = new Employee("Jack", 5000);
+        // 以下调用报错
+        // java: 不兼容的类型: common.Employee无法转换为capture#1, 共 ?
+        // mPair.setFirst(e1);
+        // 只允许传入null
+        // Pair<?>与Pair的本质区别在于，可以用任意Object对象调用原始Pair类的setFirst方法
+        mPair.setFirst(null);
+
+        System.out.println(hasNull(mPair));
+    }
+
+    // 8.8.3 无限定通配符
+    public static boolean hasNull(Pair<?> p) {
+        return p.getFirst() == null || p.getSecond() == null;
+    }
+}
+
+class WildTypeCapture {
+    public static void main(String[] args) {
+
+    }
+
+    public static void swap(Pair<?> p) {
+        swapHelper(p);
+    }
+
+    public static <T> void swapHelper(Pair<T> p) {
+        T first = p.getFirst();
+        p.setFirst(p.getSecond());
+        p.setSecond(first);
+    }
+
+    public static void maxminBonus(Manager[] a, Pair<? super Manager> result) {
+
     }
 }
