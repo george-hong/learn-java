@@ -168,7 +168,11 @@ class NoLimitWildType {
 
 class WildTypeCapture {
     public static void main(String[] args) {
-
+        Manager m1 = new Manager("Jack", 5000, 200);
+        Manager m2 = new Manager("Lucy", 2000, 500);
+        Manager m3 = new Manager("Kite", 3000, 100);
+        Manager[] managers = { m1, m2, m3 };
+        maxminBonus(managers, new Pair<>());
     }
 
     public static void swap(Pair<?> p) {
@@ -182,6 +186,7 @@ class WildTypeCapture {
     }
 
     public static void maxminBonus(Manager[] a, Pair<? super Manager> result) {
-
+        WildTypeSuper.minmaxBonus(a, result);
+        swapHelper(result);
     }
 }
