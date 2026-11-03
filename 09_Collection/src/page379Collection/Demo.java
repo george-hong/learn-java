@@ -31,6 +31,36 @@
  *  item.remove();
  *  item.remove(); // ERROR
  *  实际上，必须要先调用next越过将要删除的元素
+ *
+ *  9.1.4 泛型实用方法
+ *   java.util.Collection<E>
+ *   返回一个迭代器，用于访问集合中的元素
+ *   int size()
+ *   返回当前存储在集合中的元素个数
+ *   boolean isEmpty()
+ *   如果集合中没有元素返回true
+ *   boolean contains(Object obj)
+ *   如果集合中包含一个与Obj相等的对象，则返回true
+ *   boolean containsAll(Collection<?> other)
+ *   如果这个集合包含other集合中的所有元素，则返回true
+ *   boolean add(E element)
+ *   将一个元素添加到集合中，如果由于这个调用改变了集合，则返回true
+ *   boolean addAll(Collection<? extends E> other)
+ *   将other集合中的所有元素添加到这个集合，如果由于这个调用改变了集合，则返回true
+ *   boolean remove(Object obj)
+ *   从这个集合中删除等于obj的对象，如果有匹配的对象被删除，返回true
+ *   boolean removeAll(Collection<?> other)
+ *   从这个集合中删除Other集合中的所有元素，如果由于这个调用改变了集合，则返回true
+ *   default boolean removeIf(Predicate<? super E> filter)
+ *   从这个集合删除让filter返回true的所有元素。如果由于这个调用改变了集合，则返回true
+ *   void clear()
+ *   从这个集合中删除所有元素
+ *   boolean retainAll(Collection<?> other)
+ *   从这个集合中删除所有与other集合中元素不同的元素。如果由于这个调用改变了集合，则返回true
+ *   Object[] toArray()
+ *   返回这个集合中的对象的数组
+ *   <T> T[] toArray(IntFunction<T[]> generator)
+ *   返回这个集合中的对象的数组。这个数组用generator构造，这通常是一个构造器表达式T[]::new
  */
 package page379Collection;
 
@@ -79,7 +109,11 @@ class IteratorDemo {
         // item.remove(); // ERROR
         // 实际上，必须要先调用next越过将要删除的元素
         // Exception in thread "main" java.lang.IllegalStateException
-//        it3.remove();
+        // it3.remove();
+        // 即必须像下方代码一样再先调用一次next
+        it3.next();
+        it3.remove();
+
     }
 
 
