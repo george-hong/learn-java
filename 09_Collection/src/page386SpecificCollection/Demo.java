@@ -1,4 +1,5 @@
 /**
+ * page 386
  * 9.3.1 链表
  * 列表都有一个重大的缺陷。就是从数组中间删除一个元素开销很大，其原因是数组中位于被删除元素之后的所有元素要都向数组的开端移动。
  * 在数组中间插入一个元素也是如此
@@ -6,7 +7,7 @@
  * 在Java程序设计语言中，所有的链表实际上都有双向链接，
  *
  * 链表与泛型集合有一个重要的区别。链表是一个有序集合，每个对象的位置十分重要。LinkedList.add方法将对象添加到链表的尾部。
- * 但是，常常需要将元素添加到链表的中间。因为迭代器描述了集合中的位置，所以这种依赖于位置的add方法将有迭代器负责。
+ * 但是，常常需要将元素添加到链表的中间。因为迭代器描述了集合中的位置，所以这种依赖于位置的add方法将由迭代器负责。
  * 不过，只有对自然有序的集合使用迭代器来添加元素才有意义。
  * 集合类库提供了一个子接口ListIterator，其中包含add方法。与Collection.add不同，这个方法不返回boolean类型的值，他假定add操作总会改变链表。
  * 另外，ListIterator接口有两个方法可以用来反向遍历链表
@@ -17,6 +18,8 @@
  * remove操作与退格键的工作方式不太一样，在调用next之后，remove方法确实会删除迭代器左侧的元素，这与退格键一样。但是，如果调用了previous，
  * 则会删除迭代器右侧的元素。而且不能连续调用两次remove
  * add方法值依赖于迭代器的位置，而remove方法不同，它依赖于迭代器的状态
+ *
+ * 如果在某个迭代器修改集合时，另一个迭代器却在遍历这个集合，可能就会出现混乱。如果一个迭代器发现他的集合被另一个迭代器修改了，就会抛出异常。
  */
 package page386SpecificCollection;
 
@@ -71,6 +74,9 @@ class ListIteratorDemo2 {
         ListIterator<String> it = staff.listIterator();
         ListIterator<String> it2 = staff2.listIterator();
 
+        // remove操作与退格键的工作方式不太一样，在调用next之后，remove方法确实会删除迭代器左侧的元素，这与退格键一样。但是，如果调用了previous，
+        // 则会删除迭代器右侧的元素。而且不能连续调用两次remove
+        // add方法值依赖于迭代器的位置，而remove方法不同，它依赖于迭代器的状态
         it.next();
         it.next();
         it.remove();
@@ -85,5 +91,23 @@ class ListIteratorDemo2 {
         it2.remove();
         CollectionHelper.print(staff2); // Amy Bob Dannel 移除了右侧的元素
 
+    }
+}
+
+class ListIteratorCastErrorDemo {
+    public static void main(String[] args) {
+        var staff = new LinkedList<String>();
+        staff.add("Amy");
+        staff.add("Bob");
+        staff.add("Carl");
+        staff.add("Dannel");
+
+        ListIterator it1 = staff.listIterator();
+        ListIterator it2 = staff.listIterator();
+        it1.next();
+        it1.remove();
+        // 如果在某个迭代器修改集合时，另一个迭代器却在遍历这个集合，可能就会出现混乱。如果一个迭代器发现他的集合被另一个迭代器修改了，就会抛出异常。
+        // Exception in thread "main" java.util.ConcurrentModificationException
+        // it2.next();
     }
 }
